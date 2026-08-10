@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 480">
+  <defs>
+    <linearGradient id="snow-blazer" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6cc0ee" />
+      <stop offset="100%" stop-color="#2a79b3" />
+    </linearGradient>
+    <radialGradient id="snow-skin" cx="40%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.15" />
+      <stop offset="50%" stop-color="#eac5a2" />
+      <stop offset="100%" stop-color="#d2a17c" />
+    </radialGradient>
+    <linearGradient id="snow-hair" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7c5238" />
+      <stop offset="100%" stop-color="#5b3a28" />
+    </linearGradient>
+  </defs>
+
+  <!-- Torso (Blazer) -->
+  <g id="snow-torso">
+    <path d="M62 320 C66 258 90 238 140 232 C190 238 214 258 218 320 L218 400 L62 400 Z" fill="url(#snow-blazer)" />
+    <path d="M106 236 L140 256 L174 236 L174 246 L140 270 L106 246 Z" fill="#ffffff" />
+    <path d="M82 320 L122 238 L140 248 L102 332 Z" fill="#6cc0ee" opacity="0.9" />
+    <path d="M198 320 L158 238 L140 248 L178 332 Z" fill="#2a79b3" opacity="0.6" />
+    <path d="M82 400 L97 480 L140 480 L140 400 L140 480 L183 480 L198 400 Z" fill="#f0f0f0" />
+    <ellipse cx="110" cy="476" rx="16" ry="6" fill="#3fa0dc" />
+    <rect x="96" y="464" width="28" height="14" rx="3" fill="#3fa0dc" />
+    <ellipse cx="170" cy="476" rx="16" ry="6" fill="#3fa0dc" />
+    <rect x="156" y="464" width="28" height="14" rx="3" fill="#3fa0dc" />
+  </g>
+
+  <!-- Left Arm (behind body) -->
+  <g id="snow-left-arm">
+    <path d="M64 323 C52 358 57 408 72 428" stroke="url(#snow-blazer)" stroke-width="28" stroke-linecap="round" fill="none" />
+    <ellipse cx="72" cy="428" rx="10" ry="14" fill="url(#snow-skin)" />
+  </g>
+
+  <!-- Right Arm (front) -->
+  <g id="snow-right-arm">
+    <path d="M216 323 C228 358 223 408 208 428" stroke="url(#snow-blazer)" stroke-width="28" stroke-linecap="round" fill="none" />
+    <ellipse cx="208" cy="428" rx="10" ry="14" fill="url(#snow-skin)" />
+    <line x1="200" y1="418" x2="196" y2="403" stroke="url(#snow-skin)" stroke-width="6" stroke-linecap="round" />
+    <line x1="206" y1="416" x2="204" y2="400" stroke="url(#snow-skin)" stroke-width="6" stroke-linecap="round" />
+    <line x1="212" y1="416" x2="214" y2="400" stroke="url(#snow-skin)" stroke-width="6" stroke-linecap="round" />
+    <line x1="218" y1="418" x2="224" y2="403" stroke="url(#snow-skin)" stroke-width="6" stroke-linecap="round" />
+  </g>
+
+  <!-- Neck -->
+  <g id="snow-neck">
+    <rect x="123" y="200" width="34" height="42" rx="14" fill="url(#snow-skin)" />
+  </g>
+
+  <!-- Hair (Back) -->
+  <g id="snow-hair-back">
+    <path d="M72 165 C62 105 97 58 140 56 C183 58 218 105 208 165 C208 200 200 225 188 240 L182 172 C182 140 164 122 140 122 C116 122 98 140 98 172 L92 240 C80 225 72 200 72 165 Z" fill="url(#snow-hair)" />
+  </g>
+
+  <!-- Hair (Front) -->
+  <g id="snow-hair-front">
+    <path d="M87 125 C92 82 114 68 140 66 C166 68 188 82 193 125 C176 108 158 102 140 102 C122 102 104 108 87 125 Z" fill="#7c5238" />
+  </g>
+
+  <!-- Head/Face -->
+  <g id="snow-head">
+    <path d="M140 66 C178 66 204 98 204 142 C204 180 186 208 162 224 C148 234 144 238 140 238 C136 238 132 234 118 224 C94 208 76 180 76 142 C76 98 102 66 140 66 Z" fill="url(#snow-skin)" />
+    <ellipse cx="110" cy="155" rx="14" ry="9" fill="#e0a890" opacity="0.18" />
+    <ellipse cx="170" cy="155" rx="14" ry="9" fill="#e0a890" opacity="0.18" />
+  </g>
+
+  <!-- Nose -->
+  <g id="snow-nose">
+    <path d="M139.5 138 C141 150 142 158 140 166" stroke="#fff" stroke-opacity="0.22" stroke-width="2.4" stroke-linecap="round" fill="none" />
+    <ellipse cx="131" cy="168" rx="2.2" ry="1.5" fill="#000" opacity="0.08" />
+    <ellipse cx="149" cy="168" rx="2.2" ry="1.5" fill="#000" opacity="0.08" />
+  </g>
+
+  <!-- Eyebrows -->
+  <g id="snow-eyebrows">
+    <path d="M96 106 C106 99 120 99 130 105" stroke="#4a2e1e" stroke-width="3.6" stroke-linecap="round" fill="none" />
+    <path d="M150 105 C160 99 174 99 184 106" stroke="#4a2e1e" stroke-width="3.6" stroke-linecap="round" fill="none" />
+  </g>
+
+  <!-- Eyes -->
+  <g id="snow-eyes">
+    <g id="snow-left-eye">
+      <path d="M100 118 Q113 113 126 118" stroke="#000" stroke-opacity="0.1" stroke-width="1.6" fill="none" stroke-linecap="round" />
+      <ellipse cx="113" cy="128" rx="10" ry="12" fill="#fdfbf7" />
+      <ellipse cx="113" cy="130" rx="5.8" ry="6.8" fill="#5c453a" />
+      <ellipse cx="113" cy="130" rx="3.2" ry="4" fill="#2a1f1a" />
+      <circle cx="116" cy="125.5" r="1.8" fill="#fff" opacity="0.95" />
+      <path d="M101 117 L100 114 M107 115 L106 111 M114 114 L114 110" stroke="#33221a" stroke-opacity="0.55" stroke-width="1.2" stroke-linecap="round" />
+    </g>
+    <g id="snow-right-eye">
+      <path d="M154 118 Q167 113 180 118" stroke="#000" stroke-opacity="0.1" stroke-width="1.6" fill="none" stroke-linecap="round" />
+      <ellipse cx="167" cy="128" rx="10" ry="12" fill="#fdfbf7" />
+      <ellipse cx="167" cy="130" rx="5.8" ry="6.8" fill="#5c453a" />
+      <ellipse cx="167" cy="130" rx="3.2" ry="4" fill="#2a1f1a" />
+      <circle cx="169" cy="125.5" r="1.8" fill="#fff" opacity="0.95" />
+      <path d="M179 117 L180 114 M173 115 L174 111 M166 114 L166 110" stroke="#33221a" stroke-opacity="0.55" stroke-width="1.2" stroke-linecap="round" />
+    </g>
+  </g>
+
+  <!-- Mouth -->
+  <g id="snow-mouth">
+    <path d="M112 162 Q130 168 148 162 Q130 170 112 162 Z" fill="#c63a2e" />
+  </g>
+</svg>
