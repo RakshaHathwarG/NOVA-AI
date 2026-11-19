@@ -19,8 +19,8 @@ const ACTIONS = [
     glow: 'cyan',
   },
   {
-    label: 'Start Voice Chat',
-    hint: 'Begin a voice-enabled session',
+    label: 'Open ARIA chat',
+    hint: 'Start a new HR conversation',
     path: '/assistant/hr',
     icon: Mic,
     glow: 'cyan',

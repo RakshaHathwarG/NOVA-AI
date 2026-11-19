@@ -1,38 +1,38 @@
 export const FEATURES = [
   {
-    title: 'Persona-Aware Reasoning',
+    title: 'Role-specific response templates',
     description:
-      'Each avatar carries its own memory, tone, and domain expertise — HR and Support never blur together.',
+      'ARIA and SNOW use separate local response rules for their HR and customer-support roles.',
     icon: 'BrainCircuit',
   },
   {
-    title: 'Real-Time Voice & Text',
+    title: 'Text chat and browser voice',
     description:
-      'Switch between typing and speaking mid-conversation with sub-second response latency.',
+      'Type messages, use browser speech recognition where supported, and hear replies with device text-to-speech.',
     icon: 'AudioWaveform',
   },
   {
-    title: 'Adaptive Avatar Rendering',
+    title: 'Animated assistant avatars',
     description:
-      'Lip-synced, expression-aware avatar stages that react to sentiment and conversation pace.',
+      'Assistant avatars animate during conversations; expression changes are presentation effects.',
     icon: 'Sparkles',
   },
   {
-    title: 'Enterprise-Grade Security',
+    title: 'Account-scoped chat history',
     description:
-      'Encrypted sessions, role-scoped access, and audit trails built for regulated workplaces.',
+      'Saved conversation history is scoped to the signed-in account.',
     icon: 'ShieldCheck',
   },
   {
-    title: 'Multilingual Core',
+    title: 'Five built-in reply languages',
     description:
-      'Native support across English, Hindi, Kannada, Telugu, Tamil and more — same personality, any language.',
+      'Local response templates include English, Hindi, Japanese, Korean, and Spanish.',
     icon: 'Languages',
   },
   {
-    title: 'Insight Dashboard',
+    title: 'Conversation workspace',
     description:
-      'Track conversation volume, resolution rate, and sentiment trends in one live console.',
+      'Use the dashboard to open ARIA, SNOW, settings, and saved conversation history.',
     icon: 'LineChart',
   },
 ]
@@ -43,7 +43,7 @@ export const TECH_STACK = [
   { name: 'Tailwind CSS', detail: 'Design system utility layer' },
   { name: 'Framer Motion', detail: 'Physics-based motion' },
   { name: 'Node.js', detail: 'Runtime services' },
-  { name: 'WebSocket', detail: 'Live avatar streaming' },
+  { name: 'MongoDB', detail: 'User and conversation storage' },
 ]
 
 export const HOW_IT_WORKS = [
@@ -55,12 +55,12 @@ export const HOW_IT_WORKS = [
   {
     label: 'Converse',
     title: 'Talk naturally',
-    description: 'Type or speak — NOVA responds in real time with context-aware, role-specific answers.',
+    description: 'Type a message or use device speech controls where supported; replies come from local role-specific templates.',
   },
   {
     label: 'Resolve',
     title: 'Get it handled',
-    description: 'Leave with an answer, a resolved ticket, or a clear next step — no dead ends.',
+    description: 'Review the reply, continue the conversation, or open Help & Feedback.',
   },
 ]
 
@@ -71,11 +71,11 @@ export const ROLES = [
     persona: 'Aria',
     tagline: 'Recruitment. Policy. People.',
     description:
-      'Professional AI-powered HR assistant for recruitment, interviews, employee policies, payroll, leave management, attendance, benefits, HR FAQs, and workplace guidance.',
+      'Rule-based HR conversation demo for career guidance, interview practice, and general workplace questions. It is not connected to your company’s policies or employee records.',
     accent: 'indigo',
     path: '/assistant/hr',
     icon: 'Briefcase',
-    tags: ['Recruitment', 'Payroll', 'Leave & Attendance', 'Policies'],
+    tags: ['Career guidance', 'Interview practice', 'Workplace questions'],
   },
   {
     id: 'support',
@@ -83,11 +83,11 @@ export const ROLES = [
     persona: 'Snow',
     tagline: 'Orders. Answers. Care.',
     description:
-      'Friendly AI-powered customer support assistant for products, services, FAQs, complaints, order information, customer assistance, and general support.',
+      'Rule-based customer-support demo for general questions and issue-triage practice. It is not connected to a store, account, ticketing system, or order records.',
     accent: 'cyan',
     path: '/assistant/support',
     icon: 'Headset',
-    tags: ['Order Tracking', 'Complaints', 'Product FAQs', 'General Help'],
+    tags: ['Support questions', 'Issue triage', 'General guidance'],
   },
 ]
 

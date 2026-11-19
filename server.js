@@ -4,7 +4,8 @@ const dotenv = require('dotenv')
 dotenv.config({ path: path.resolve(__dirname, '../.env') })
 
 if (!process.env.JWT_SECRET) {
-  process.env.JWT_SECRET = 'dev-secret-key'
+  console.error('Server startup failed: JWT_SECRET is not configured.')
+  process.exit(1)
 }
 
 const express = require('express')

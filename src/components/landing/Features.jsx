@@ -9,8 +9,8 @@ export default function Features() {
     <section id="features" className="relative mx-auto max-w-7xl px-6 py-24">
       <SectionHeading
         eyebrow="Capabilities"
-        title="Built for real conversations, not scripted bots"
-        description="Every layer of NOVA is designed so each persona feels distinct, informed, and genuinely useful."
+        title="Role-aware assistants you can explore"
+        description="See how ARIA and SNOW use separate reply templates, browser voice controls, and account-scoped conversation history."
       />
 
       <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

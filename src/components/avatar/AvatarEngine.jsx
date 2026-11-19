@@ -5,6 +5,7 @@ import AvatarRenderer from './AvatarRenderer'
 import { useAvatarStateMachine } from '../../hooks/useAvatarStateMachine'
 import { useSpeechSynthesis } from '../../hooks/useSpeechSynthesis'
 import { sanitizeForSpeech } from '../../utils/emotionEngine'
+import { getPreferences } from '../../utils/preferences'
 
 /**
  * AvatarEngine — the reusable orchestrator that wires together:
@@ -58,9 +59,17 @@ const AvatarEngine = forwardRef(function AvatarEngine(
       setTimeout(() => {
         if (!mountedRef.current) return
         onGreetingStart?.()
+        const preferences = getPreferences()
+        if (!preferences.voiceEnabled) {
+          transition('smiling')
+          onGreetingEnd?.()
+          setTimeout(() => mountedRef.current && transition('idle'), 1000)
+          return
+        }
         transition('speaking')
         speak(sanitizeForSpeech(persona.greeting), {
           lang: language,
+          rate: preferences.speechRate,
           onStart: () => mountedRef.current && transition('speaking'),
           onEnd: () => {
             if (!mountedRef.current) return
@@ -79,8 +88,17 @@ const AvatarEngine = forwardRef(function AvatarEngine(
       setTimeout(() => {
         if (!mountedRef.current) return
         transition('speaking')
+        const preferences = getPreferences()
+        const settleState = ['smiling', 'concerned', 'confused', 'goodbye'].includes(emotion) ? emotion : 'idle'
+        if (!preferences.voiceEnabled) {
+          transition(settleState)
+          onEnd?.()
+          if (settleState !== 'idle') setTimeout(() => mountedRef.current && transition('idle'), 1300)
+          return
+        }
         speak(sanitizeForSpeech(text), {
           lang: lang || language,
+          rate: preferences.speechRate,
           onEnd: () => {
             if (!mountedRef.current) return
             const settleState = ['smiling', 'concerned', 'confused', 'goodbye'].includes(emotion)

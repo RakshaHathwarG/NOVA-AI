@@ -7,8 +7,8 @@ export default function TechStack() {
     <section id="technology" className="relative mx-auto max-w-7xl px-6 py-24">
       <SectionHeading
         eyebrow="Technology"
-        title="Engineered on a modern, battle-tested stack"
-        description="No fragile plugins or bloated frameworks — just fast, composable tools that scale."
+        title="Built with the project’s current stack"
+        description="The interface uses React and Vite with an Express API and MongoDB-backed account and conversation routes."
       />
 
       <div className="mt-16 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">

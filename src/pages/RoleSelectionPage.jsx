@@ -13,26 +13,26 @@ const ROLES = [
     name: 'HR Assistant',
     persona: 'ARIA',
     tagline: 'Senior HR Assistant',
-    description: 'Professional AI-powered HR assistant for recruitment, interviews, employee policies, payroll, leave management, attendance, benefits, and workplace guidance.',
+    description: 'ARIA gives general HR and career guidance, including interview preparation and workplace communication. It cannot access your employer policies or employee records.',
     accent: 'purple',
     path: '/assistant/hr',
     image: ariaImg,
     icon: Briefcase,
-    capabilities: ['HR Policies & Procedures', 'Recruitment & Onboarding', 'Leave Management', 'Employee Guidelines', 'Payroll Queries', 'Training Modules'],
-    languages: ['English', 'Hindi', 'Japanese', 'Korean'],
+    capabilities: ['Career planning', 'Interview practice', 'Workplace guidance'],
+    languages: ['English', 'Hindi', 'Japanese', 'Korean', 'Spanish + more'],
   },
   {
     id: 'support',
     name: 'Customer Support',
     persona: 'SNOW',
     tagline: 'Customer Support Assistant',
-    description: 'Friendly AI-powered support assistant for products, services, FAQs, complaints, order tracking, and general customer assistance.',
+    description: 'SNOW helps troubleshoot products and services. It cannot access customer accounts, orders, billing, or support tickets.',
     accent: 'cyan',
     path: '/assistant/support',
     image: snowImg,
     icon: Headset,
-    capabilities: ['Customer Queries', 'Order Assistance', 'Complaint Resolution', 'Product Information', 'Returns & Refunds', 'General Support'],
-    languages: ['English', 'Hindi', 'Japanese', 'Spanish'],
+    capabilities: ['Troubleshooting', 'Issue triage', 'Product guidance'],
+    languages: ['English', 'Hindi', 'Japanese', 'Korean', 'Spanish + more'],
   },
 ]
 
@@ -83,7 +83,7 @@ export default function RoleSelectionPage() {
             </div>
             <h1 className="text-3xl md:text-4xl font-bold text-white">Who do you need today?</h1>
             <p className="mt-2 text-ink-muted max-w-lg">
-              Each NOVA persona is trained on a distinct knowledge domain. Pick an assistant to begin your session.
+              Choose a role-based assistant. Replies are generated from your questions when Gemini is configured on the server.
             </p>
           </motion.div>
 
@@ -181,3 +181,4 @@ export default function RoleSelectionPage() {
     </AppLayout>
   )
 }
+

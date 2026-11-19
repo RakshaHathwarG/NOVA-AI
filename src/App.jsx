@@ -9,6 +9,8 @@ import HRAssistantPage from './pages/HRAssistantPage'
 import CustomerSupportPage from './pages/CustomerSupportPage'
 import SettingsPage from './pages/SettingsPage'
 import NotFoundPage from './pages/NotFoundPage'
+import ChatHistoryPage from './pages/ChatHistoryPage'
+import HelpSupportPage from './pages/HelpSupportPage'
 import ProtectedRoute from './components/layout/ProtectedRoute'
 
 export default function App() {
@@ -60,6 +62,8 @@ export default function App() {
             </ProtectedRoute>
           }
         />
+        <Route path="/history" element={<ProtectedRoute><ChatHistoryPage /></ProtectedRoute>} />
+        <Route path="/help" element={<ProtectedRoute><HelpSupportPage /></ProtectedRoute>} />
 
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

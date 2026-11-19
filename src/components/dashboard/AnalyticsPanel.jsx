@@ -62,8 +62,8 @@ export default function AnalyticsPanel() {
       <div className="relative flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="text-[11px] uppercase tracking-[0.24em] text-ink-faint">Analytics</p>
-          <h2 className="mt-2 text-xl font-semibold text-white">Weekly Interactions</h2>
-          <p className="mt-1 text-sm text-ink-muted">HR and support engagement across the week.</p>
+          <h2 className="mt-2 text-xl font-semibold text-white">Example interaction chart</h2>
+          <p className="mt-1 text-sm text-ink-muted">Illustrative sample data; not live account analytics.</p>
         </div>
         <div className="flex items-center gap-5 text-xs text-ink-muted">
           <span className="flex items-center gap-2">
@@ -164,7 +164,7 @@ export default function AnalyticsPanel() {
         <div className="rounded-dashboard border border-white/[0.06] bg-white/[0.02] p-5">
           <div className="flex items-center gap-2 text-sm text-ink-muted">
             <Mic size={16} className="text-nova-cyan" />
-            Voice Usage
+            Illustrative sample values
           </div>
           <div className="mt-5 space-y-4">
             {VOICE_USAGE.map((item, i) => (
@@ -190,7 +190,7 @@ export default function AnalyticsPanel() {
         <div className="rounded-dashboard border border-white/[0.06] bg-white/[0.02] p-5">
           <div className="flex items-center gap-2 text-sm text-ink-muted">
             <Languages size={16} className="text-nova-purple" />
-            Languages Used
+            AI reply languages
           </div>
           <div className="mt-5 flex flex-wrap gap-2">
             {LANGUAGES.map((lang, i) => (
@@ -207,10 +207,11 @@ export default function AnalyticsPanel() {
             ))}
           </div>
           <p className="mt-4 text-xs leading-relaxed text-ink-faint">
-            Multilingual sessions active across all supported locales this week.
+            These are the five language presets in Settings. Gemini can reply in additional languages when they are detected.
           </p>
         </div>
       </div>
     </GlassCard>
   )
 }
+

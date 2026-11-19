@@ -101,7 +101,7 @@ export default function Hero() {
               transition={{ duration: 0.9, delay: 0.3 }}
               className="mt-6 max-w-lg text-base font-light leading-relaxed text-slate-300/90 md:text-lg"
             >
-              Experience seamless role-aware AI virtual assistants engineered for enterprise HR policy guidance and 24/7 customer support.
+              Explore role-based HR and customer-support assistants, multilingual conversations, and browser voice controls.
             </motion.p>
 
             {/* CTA Buttons */}

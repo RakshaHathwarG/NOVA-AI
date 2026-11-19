@@ -26,10 +26,23 @@ async function request(path, options = {}) {
 export const authApi = {
   register: (payload) => request('/register', { method: 'POST', body: JSON.stringify(payload) }),
   login: (payload) => request('/login', { method: 'POST', body: JSON.stringify(payload) }),
+  googleLogin: (credential) => request('/google', { method: 'POST', body: JSON.stringify({ credential }) }),
   getProfile: () => request('/profile'),
 }
 
 export const chatApi = {
+  generate: (payload) => request('/chat/generate', { method: 'POST', body: JSON.stringify(payload) }),
   saveMessage: (payload) => request('/chat', { method: 'POST', body: JSON.stringify(payload) }),
-  getHistory: (userId) => request(`/chat-history/${userId}`),
+  getHistory: (role) => request(`/chat-history${role ? `?role=${encodeURIComponent(role)}` : ''}`),
 }
+
+export const sessionBriefApi = {
+  get: (role, conversationId) => request(`/session-brief?role=${encodeURIComponent(role)}&conversationId=${encodeURIComponent(conversationId)}`),
+  save: (payload) => request('/session-brief', { method: 'PUT', body: JSON.stringify(payload) }),
+  delete: (role, conversationId) => request(`/session-brief?role=${encodeURIComponent(role)}&conversationId=${encodeURIComponent(conversationId)}`, { method: 'DELETE' }),
+}
+
+export const feedbackApi = {
+  submit: (payload) => request('/feedback', { method: 'POST', body: JSON.stringify(payload) }),
+}
+

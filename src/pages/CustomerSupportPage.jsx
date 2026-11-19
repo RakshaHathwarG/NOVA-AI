@@ -10,7 +10,7 @@ const persona = AVATAR_PERSONAS.snow
 
 export default function CustomerSupportPage() {
   return (
-    <AppLayout>
+    <AppLayout wide>
       <PageTransition>
         <div className="flex items-center gap-3 mb-6">
           <Badge tone="cyan">Customer Support</Badge>

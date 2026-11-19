@@ -1,15 +1,27 @@
 import { memo } from 'react'
 import { motion } from 'framer-motion'
 import { cn } from '../../utils/cn'
+import VideoRecommendationCard from './VideoRecommendationCard'
 
-function MessageBubble({ role, text,file, accent = 'indigo', timestamp }) {
+function MessageBubble({
+  role,
+  text,
+  file,
+  accent = 'indigo',
+  timestamp,
+  video,
+}) {
   const isUser = role === 'user'
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-      className={cn('flex w-full', isUser ? 'justify-end' : 'justify-start')}
+      className={cn(
+        'flex w-full',
+        isUser ? 'justify-end' : 'justify-start'
+      )}
     >
       <div
         className={cn(
@@ -20,16 +32,26 @@ function MessageBubble({ role, text,file, accent = 'indigo', timestamp }) {
         )}
       >
         <p className="whitespace-pre-wrap">{text}</p>
-        <>
 
-  {file && (
-    <p className="mt-2 text-xs text-blue-400">
-      📎 {file.name}
-    </p>
-  )}
-</>
+        {file && (
+          <p className="mt-2 text-xs text-[#4F7CFF] font-medium">
+            📎 {file.name}
+          </p>
+        )}
+
+        {!isUser && video?.status && (
+          <VideoRecommendationCard recommendation={video} />
+        )}
+
         {timestamp && (
-          <p className={cn('mt-1.5 text-[10px]', isUser ? 'text-white/70' : 'text-ink-faint')}>{timestamp}</p>
+          <p
+            className={cn(
+              'mt-1.5 text-[10px]',
+              isUser ? 'text-white/70' : 'text-ink-faint'
+            )}
+          >
+            {timestamp}
+          </p>
         )}
       </div>
     </motion.div>

@@ -1,83 +1,76 @@
 import { createContext, useContext, useState, useCallback, useEffect } from 'react'
+import { authApi } from '../services/api'
 
 const AuthContext = createContext(null)
-
 const STORAGE_KEY = 'nova_ai_user'
+const TOKEN_KEY = 'nova_token'
 
-// ── Mock auth helpers (no backend needed) ──────────────────────────────────
-function mockDelay(ms = 400) {
-  return new Promise((res) => setTimeout(res, ms))
-}
-
-function loadStoredUser() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY)
-    return raw ? JSON.parse(raw) : null
-  } catch {
-    return null
-  }
-}
-
-function saveUser(user) {
+function persistSession(token, user) {
+  localStorage.setItem(TOKEN_KEY, token)
   localStorage.setItem(STORAGE_KEY, JSON.stringify(user))
 }
 
-function clearUser() {
-  localStorage.removeItem(STORAGE_KEY)
+function mapUser(user) {
+  return { id: user.id, name: user.name, email: user.email, role: 'admin', avatar: null, createdAt: user.createdAt }
 }
 
-// ── Provider ───────────────────────────────────────────────────────────────
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
 
-  // Restore session on mount
   useEffect(() => {
-    const stored = loadStoredUser()
-    if (stored) setUser(stored)
-    setIsLoading(false)
+    const token = localStorage.getItem(TOKEN_KEY)
+    if (!token) {
+      localStorage.removeItem(STORAGE_KEY)
+      setIsLoading(false)
+      return
+    }
+    authApi.getProfile()
+      .then(({ user: profile }) => {
+        const restored = mapUser(profile)
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(restored))
+        setUser(restored)
+      })
+      .catch(() => {
+        localStorage.removeItem(TOKEN_KEY)
+        localStorage.removeItem(STORAGE_KEY)
+        setUser(null)
+      })
+      .finally(() => setIsLoading(false))
   }, [])
 
   const login = useCallback(async (email, password) => {
-    await mockDelay()
-    // Accept any valid-looking credentials; derive a display name from email
-    const name = email.split('@')[0].replace(/[._-]/g, ' ')
-      .replace(/\b\w/g, (c) => c.toUpperCase())
-    const profile = {
-      id: btoa(email),
-      name,
-      email,
-      role: 'admin',
-      avatar: null,
-      createdAt: new Date().toISOString(),
-    }
+    const result = await authApi.login({ email, password })
+    const profile = mapUser(result.user)
+    persistSession(result.token, profile)
     setUser(profile)
-    saveUser(profile)
+    return profile
+  }, [])
+
+  const loginWithGoogle = useCallback(async (credential) => {
+    const result = await authApi.googleLogin(credential)
+    const profile = mapUser(result.user)
+    persistSession(result.token, profile)
+    setUser(profile)
     return profile
   }, [])
 
   const register = useCallback(async (name, email, password) => {
-    await mockDelay()
-    const profile = {
-      id: btoa(email),
-      name: name.trim() || email.split('@')[0],
-      email,
-      role: 'admin',
-      avatar: null,
-      createdAt: new Date().toISOString(),
-    }
+    const result = await authApi.register({ name, email, password })
+    const profile = mapUser(result.user)
+    persistSession(result.token, profile)
     setUser(profile)
-    saveUser(profile)
     return profile
   }, [])
 
   const logout = useCallback(() => {
     setUser(null)
-    clearUser()
+    localStorage.removeItem(TOKEN_KEY)
+    localStorage.removeItem(STORAGE_KEY)
   }, [])
 
   return (
-    <AuthContext.Provider value={{ user, isLoading, login, register, logout, isAuthenticated: Boolean(user) }}>
+    <AuthContext.Provider value={{ user, isLoading, login, loginWithGoogle, register, logout, isAuthenticated: Boolean(user) }}>
       {children}
     </AuthContext.Provider>
   )

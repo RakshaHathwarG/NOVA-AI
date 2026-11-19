@@ -7,8 +7,8 @@ export default function HowItWorks() {
     <section id="how-it-works" className="relative mx-auto max-w-7xl px-6 py-24">
       <SectionHeading
         eyebrow="Process"
-        title="From role to resolution in three steps"
-        description="No onboarding friction. Pick a persona, start talking, walk away with an answer."
+        title="A clear path through the demo"
+        description="Choose a role, try a local reply template, then revisit the conversation in your history."
       />
 
       <div className="relative mt-20 grid gap-10 md:grid-cols-3">

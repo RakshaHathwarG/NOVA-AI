@@ -16,10 +16,10 @@ export default function CTA() {
       >
         <div className="absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-nova-gradient opacity-20 blur-[100px]" />
         <h2 className="relative text-3xl md:text-5xl font-semibold text-white leading-tight max-w-2xl mx-auto">
-          Your next hire is an avatar. Ready to meet them?
+          Meet your role-based assistant workspace.
         </h2>
         <p className="relative mt-5 text-ink-muted max-w-xl mx-auto text-base md:text-lg">
-          Spin up your first NOVA persona in under two minutes — no credit card required.
+          Choose ARIA for HR or SNOW for customer support. Demo replies currently use local rule-based templates.
         </p>
         <div className="relative mt-9 flex items-center justify-center">
           <Button variant="primary" size="lg" onClick={() => navigate('/login')}>

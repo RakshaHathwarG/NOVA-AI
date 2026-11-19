@@ -509,9 +509,13 @@ export function getReply(roleId, userText, language = 'English') {
 
   const matched = matchRule(rules, userText)
 
-  if (matched) {
-    return matched.reply[lang] || matched.reply.English
-  }
-
-  return fallbackSet[lang] || fallbackSet.English
+  const sampleReply = matched ? (matched.reply[lang] || matched.reply.English) : (fallbackSet[lang] || fallbackSet.English)
+  const disclaimer = {
+    English: 'Demo template — not connected to live company or order records. ',
+    Hindi: 'डेमो उत्तर — कंपनी या ऑर्डर के लाइव रिकॉर्ड से जुड़ा नहीं है। ',
+    Japanese: 'デモ回答 — 会社や注文の実データには接続されていません。 ',
+    Korean: '데모 답변 — 회사 또는 주문의 실제 기록과 연결되어 있지 않습니다. ',
+    Spanish: 'Respuesta de demostración — no está conectada a registros reales de la empresa ni de pedidos. ',
+  }[lang]
+  return `${disclaimer}${sampleReply}`
 }

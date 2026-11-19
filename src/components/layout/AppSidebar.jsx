@@ -10,10 +10,10 @@ import { useAuth } from '../../context/AuthContext'
 const NAV_LINKS = [
   { to: '/dashboard', label: 'Overview', icon: LayoutDashboard },
   { to: '/assistant/hr', label: 'Assistants', icon: Users },
-  { to: '/assistant/hr', label: 'Chat History', icon: MessageSquare },
-  { to: '/settings', label: 'Voice & Language', icon: Mic },
+  { to: '/history', label: 'Chat History', icon: MessageSquare },
+  { to: '/settings?tab=voice', label: 'Voice & Language', icon: Mic },
   { to: '/settings', label: 'Settings', icon: Settings },
-  { to: '/', label: 'Help & Support', icon: HelpCircle },
+  { to: '/help', label: 'Help & Feedback', icon: HelpCircle },
 ]
 
 const ROLE_LINKS = [
@@ -32,6 +32,13 @@ export default function AppSidebar() {
   function handleLogout() {
     logout()
     navigate('/')
+  }
+
+  function linkIsActive(label, routeIsActive) {
+    const settingsRoute = location.pathname === '/settings'
+    if (label === 'Voice & Language') return settingsRoute && location.search.includes('tab=voice')
+    if (label === 'Settings') return settingsRoute && !location.search.includes('tab=voice')
+    return routeIsActive
   }
 
   return (
@@ -61,20 +68,23 @@ export default function AppSidebar() {
               key={label}
               to={to}
               end={to === '/dashboard'}
-              className={({ isActive }) =>
-                `group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-200 ${
-                  isActive
+              className={({ isActive }) => {
+                const active = linkIsActive(label, isActive)
+                return `group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-200 ${
+                  active
                     ? 'bg-nova-purple/20 text-white border border-nova-purple/30'
                     : 'text-[#8b92a5] hover:bg-white/[0.05] hover:text-white'
                 }`
-              }
+              }}
             >
-              {({ isActive }) => (
+              {({ isActive }) => {
+                const active = linkIsActive(label, isActive)
+                return (
                 <>
-                  <Icon size={17} className={isActive ? 'text-nova-purple' : 'text-[#8b92a5] group-hover:text-white'} />
+                  <Icon size={17} className={active ? 'text-nova-purple' : 'text-[#8b92a5] group-hover:text-white'} />
                   {label}
                 </>
-              )}
+              )}}
             </NavLink>
           ))}
 

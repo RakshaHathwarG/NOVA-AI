@@ -18,10 +18,10 @@ export default function ActivityFeed() {
         <div>
           <p className="text-[11px] uppercase tracking-[0.24em] text-ink-faint">Activity</p>
           <h3 className="mt-2 text-lg font-semibold text-white">Recent Timeline</h3>
-          <p className="mt-1 text-sm text-ink-muted">Latest assistant actions across your workspace.</p>
+          <p className="mt-1 text-sm text-ink-muted">Example activity entries are not connected to your account data.</p>
         </div>
         <span className="rounded-full border border-nova-cyan/20 bg-nova-cyan/10 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-nova-cyan">
-          Live
+          Example
         </span>
       </div>
 

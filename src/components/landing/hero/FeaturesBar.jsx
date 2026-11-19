@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion'
-import { Users, Zap, ShieldCheck, Globe } from 'lucide-react'
+import { BriefcaseBusiness, Languages, MessageSquareText, Volume2 } from 'lucide-react'
 
 const STATS = [
-  { icon: Users, stat: '10K+', label: 'Enterprise Users', color: '#8A2EFF' },
-  { icon: Zap, stat: '99.9%', label: 'Uptime & Reliability', color: '#00D9FF' },
-  { icon: ShieldCheck, stat: 'Enterprise', label: 'Grade Security', color: '#B16CFF' },
-  { icon: Globe, stat: '50+', label: 'Languages Supported', color: '#38BDF8' },
+  { icon: BriefcaseBusiness, stat: 'ARIA + SNOW', label: 'Separate HR and support roles', color: '#8A2EFF' },
+  { icon: Languages, stat: '5 languages', label: 'Built-in rule-based reply templates', color: '#00D9FF' },
+  { icon: Volume2, stat: 'Browser voice', label: 'Uses voices available on your device', color: '#B16CFF' },
+  { icon: MessageSquareText, stat: 'Saved chats', label: 'Account-scoped conversation history', color: '#38BDF8' },
 ]
 
 /**

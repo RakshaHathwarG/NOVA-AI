@@ -1,8 +1,9 @@
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import { Mail, Lock, Eye, EyeOff, ArrowRight, Sparkles, Loader2, User } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
+import nebulaBackground from '../assets/nova-deep-space-nebula.svg'
 
 // ── Particle star background ────────────────────────────────────────────────
 function StarField() {
@@ -36,166 +37,6 @@ function StarField() {
   )
 }
 
-// ── AI Hologram visual (left side) ──────────────────────────────────────────
-function AIHologram() {
-  return (
-    <div className="relative flex items-center justify-center w-full h-full">
-      {/* Outer glow ring */}
-      <motion.div
-        className="absolute rounded-full border border-purple-500/20"
-        style={{ width: 420, height: 420 }}
-        animate={{ rotate: 360 }}
-        transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
-      />
-      <motion.div
-        className="absolute rounded-full border border-indigo-400/15"
-        style={{ width: 360, height: 360 }}
-        animate={{ rotate: -360 }}
-        transition={{ duration: 22, repeat: Infinity, ease: 'linear' }}
-      />
-
-      {/* Main glowing circle */}
-      <motion.div
-        className="relative flex items-center justify-center rounded-full"
-        style={{
-          width: 280, height: 280,
-          background: 'radial-gradient(circle at 40% 35%, rgba(139,92,246,0.25) 0%, rgba(79,70,229,0.15) 40%, rgba(15,10,40,0.8) 100%)',
-          border: '1.5px solid rgba(139,92,246,0.4)',
-          boxShadow: '0 0 60px rgba(139,92,246,0.3), inset 0 0 40px rgba(79,70,229,0.15)',
-        }}
-        animate={{ boxShadow: ['0 0 60px rgba(139,92,246,0.3), inset 0 0 40px rgba(79,70,229,0.15)', '0 0 90px rgba(139,92,246,0.5), inset 0 0 60px rgba(79,70,229,0.25)', '0 0 60px rgba(139,92,246,0.3), inset 0 0 40px rgba(79,70,229,0.15)'] }}
-        transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-      >
-        {/* AI Head SVG */}
-        <svg width="160" height="180" viewBox="0 0 160 180" fill="none">
-          {/* Head silhouette */}
-          <path
-            d="M80 20 C45 20 30 45 30 75 C30 95 35 110 45 120 L45 140 L115 140 L115 120 C125 110 130 95 130 75 C130 45 115 20 80 20Z"
-            fill="url(#headGrad)"
-            stroke="rgba(139,92,246,0.6)"
-            strokeWidth="1"
-          />
-          {/* Brain circuit lines */}
-          <path d="M55 65 L75 55 L90 65 L105 55" stroke="rgba(139,92,246,0.7)" strokeWidth="1" strokeLinecap="round" />
-          <path d="M50 80 L65 72 L80 80 L95 72 L110 80" stroke="rgba(99,102,241,0.6)" strokeWidth="1" strokeLinecap="round" />
-          <path d="M55 95 L70 88 L85 95 L100 88" stroke="rgba(139,92,246,0.5)" strokeWidth="1" strokeLinecap="round" />
-          {/* Circuit dots */}
-          <circle cx="75" cy="55" r="2.5" fill="rgba(167,139,250,0.9)" />
-          <circle cx="90" cy="65" r="2" fill="rgba(139,92,246,0.8)" />
-          <circle cx="65" cy="72" r="2.5" fill="rgba(167,139,250,0.9)" />
-          <circle cx="95" cy="72" r="2" fill="rgba(99,102,241,0.7)" />
-          <circle cx="80" cy="80" r="3" fill="rgba(167,139,250,1)" />
-          <circle cx="85" cy="95" r="2" fill="rgba(139,92,246,0.8)" />
-          {/* Eyes */}
-          <ellipse cx="65" cy="85" rx="6" ry="5" fill="rgba(99,102,241,0.3)" stroke="rgba(139,92,246,0.8)" strokeWidth="1" />
-          <ellipse cx="95" cy="85" rx="6" ry="5" fill="rgba(99,102,241,0.3)" stroke="rgba(139,92,246,0.8)" strokeWidth="1" />
-          <circle cx="65" cy="85" r="2.5" fill="rgba(167,139,250,0.9)" />
-          <circle cx="95" cy="85" r="2.5" fill="rgba(167,139,250,0.9)" />
-          {/* Star particles inside */}
-          <circle cx="60" cy="55" r="1.5" fill="white" opacity="0.8" />
-          <circle cx="100" cy="60" r="1" fill="white" opacity="0.6" />
-          <circle cx="45" cy="75" r="1" fill="rgba(167,139,250,0.9)" />
-          <circle cx="115" cy="80" r="1.5" fill="rgba(167,139,250,0.7)" />
-          <circle cx="70" cy="110" r="1" fill="white" opacity="0.5" />
-          <defs>
-            <linearGradient id="headGrad" x1="30" y1="20" x2="130" y2="140" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="rgba(79,70,229,0.6)" />
-              <stop offset="50%" stopColor="rgba(15,10,40,0.9)" />
-              <stop offset="100%" stopColor="rgba(139,92,246,0.3)" />
-            </linearGradient>
-          </defs>
-        </svg>
-
-        {/* Floating particles inside ring */}
-        {[...Array(8)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-purple-400"
-            style={{
-              width: Math.random() * 3 + 1.5,
-              height: Math.random() * 3 + 1.5,
-              left: `${15 + Math.random() * 70}%`,
-              top: `${15 + Math.random() * 70}%`,
-              opacity: 0.7,
-            }}
-            animate={{
-              y: [0, -8, 0],
-              opacity: [0.7, 0.2, 0.7],
-            }}
-            transition={{
-              duration: 2 + Math.random() * 2,
-              delay: i * 0.3,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
-          />
-        ))}
-      </motion.div>
-
-      {/* Platform / base rings */}
-      <div className="absolute" style={{ bottom: '12%' }}>
-        {[1, 0.75, 0.55, 0.38, 0.24].map((scale, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full border"
-            style={{
-              width: 300 * scale,
-              height: 60 * scale,
-              left: `${-150 * scale}px`,
-              top: `${i * 10}px`,
-              borderColor: `rgba(139,92,246,${0.35 - i * 0.05})`,
-              background: i === 0
-                ? 'radial-gradient(ellipse, rgba(139,92,246,0.12) 0%, transparent 70%)'
-                : 'transparent',
-            }}
-            animate={{ opacity: [0.6, 1, 0.6] }}
-            transition={{ duration: 2.5, delay: i * 0.2, repeat: Infinity, ease: 'easeInOut' }}
-          />
-        ))}
-        {/* Central glow dot on platform */}
-        <motion.div
-          className="absolute rounded-full"
-          style={{
-            width: 16, height: 16,
-            left: '-8px',
-            top: '-4px',
-            background: 'radial-gradient(circle, rgba(255,200,255,1) 0%, rgba(167,139,250,0.8) 40%, transparent 70%)',
-            boxShadow: '0 0 20px rgba(167,139,250,0.9), 0 0 40px rgba(139,92,246,0.6)',
-          }}
-          animate={{ scale: [1, 1.4, 1], opacity: [0.8, 1, 0.8] }}
-          transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-        />
-      </div>
-
-      {/* Beam from head to platform */}
-      <div
-        className="absolute"
-        style={{
-          width: 2,
-          height: '35%',
-          top: '50%',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          background: 'linear-gradient(to bottom, rgba(139,92,246,0.6), rgba(167,139,250,0.1))',
-          filter: 'blur(1px)',
-        }}
-      />
-    </div>
-  )
-}
-
-// ── Google G logo ────────────────────────────────────────────────────────────
-function GoogleIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24">
-      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
-      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
-      <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05" />
-      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
-    </svg>
-  )
-}
-
 // ── Main Login Page ──────────────────────────────────────────────────────────
 export default function LoginPage() {
   const [mode, setMode] = useState('login')
@@ -205,7 +46,6 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false)
   const [rememberMe, setRememberMe] = useState(false)
   const [submitting, setSubmitting] = useState(false)
-  const [googleLoading, setGoogleLoading] = useState(false)
   const [error, setError] = useState('')
   const { login, register } = useAuth()
   const navigate = useNavigate()
@@ -233,47 +73,59 @@ export default function LoginPage() {
     }
   }
 
-  async function handleGoogleSignIn() {
-    setGoogleLoading(true)
-    setError('')
-    try {
-      // Mock Google OAuth — creates a realistic Google user session
-      await login('nova.user@gmail.com', 'google-oauth-mock')
-      navigate('/dashboard')
-    } catch {
-      setError('Google sign-in unavailable in demo mode.')
-    } finally {
-      setGoogleLoading(false)
-    }
-  }
-
   return (
     <div
-      className="relative min-h-screen overflow-hidden flex"
-      style={{ background: 'linear-gradient(135deg, #06040f 0%, #0d0720 40%, #0a0520 70%, #060312 100%)' }}
+      className="relative min-h-screen overflow-hidden flex bg-cover bg-right bg-no-repeat lg:bg-center"
+      style={{ backgroundColor: '#060313', backgroundImage: `url(${nebulaBackground})` }}
     >
       <StarField />
 
-      {/* ── Left: AI Hologram ─────────────────────────────────────────── */}
-      <div className="hidden lg:flex flex-1 items-center justify-center relative">
+      {/* ── Left: NOVA workspace introduction ─────────────────────────── */}
+      <section className="relative z-10 hidden min-h-screen flex-[1.1] flex-col justify-between px-10 py-12 lg:flex xl:px-16">
         <motion.div
-          initial={{ opacity: 0, scale: 0.85 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-          className="w-full h-full max-w-xl"
-          style={{ minHeight: '100vh' }}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="max-w-xl pt-8 xl:pt-12"
         >
-          <AIHologram />
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-violet-300/25 bg-[#100b27]/65 px-3.5 py-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-violet-100 backdrop-blur-md">
+            <span className="h-1.5 w-1.5 rounded-full bg-teal-300 shadow-[0_0_12px_rgba(94,234,212,0.9)]" />
+            Your AI workspace
+          </div>
+          <h2 className="font-display text-4xl font-semibold leading-[1.12] text-white xl:text-5xl">
+            A smarter way to
+            <span className="mt-1 block bg-gradient-to-r from-fuchsia-200 via-violet-200 to-cyan-200 bg-clip-text text-transparent">work, support, and grow.</span>
+          </h2>
+          <p className="mt-5 max-w-lg text-sm leading-6 text-slate-300/90 xl:text-base">
+            Meet your role-based AI partners, ready to help your team move forward.
+          </p>
         </motion.div>
-      </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.25, duration: 0.7 }}
+          className="flex items-center gap-3 pb-2"
+        >
+          <div className="rounded-xl border border-violet-200/20 bg-[#100b27]/60 px-4 py-2.5 backdrop-blur-md">
+            <span className="block text-xs font-semibold tracking-wide text-white">ARIA</span>
+            <span className="mt-0.5 block text-[10px] text-slate-300/80">People & HR</span>
+          </div>
+          <div className="rounded-xl border border-cyan-200/20 bg-[#100b27]/60 px-4 py-2.5 backdrop-blur-md">
+            <span className="block text-xs font-semibold tracking-wide text-white">SNOW</span>
+            <span className="mt-0.5 block text-[10px] text-slate-300/80">Customer success</span>
+          </div>
+          <span className="ml-2 text-xs text-slate-300/75">Two focused assistants. One workspace.</span>
+        </motion.div>
+      </section>
 
       {/* ── Right: Login Card ─────────────────────────────────────────── */}
-      <div className="flex flex-1 items-center justify-center px-6 py-16 lg:px-12 relative z-10">
+      <div className="relative z-10 flex flex-1 items-center justify-center px-5 py-8 sm:px-8 lg:flex-[0.9] lg:px-10 lg:py-12 xl:px-16">
         <motion.div
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="w-full max-w-md"
+          className="w-full max-w-[430px]"
         >
           {/* Floating icon above card */}
           <div className="flex justify-center mb-0 relative z-10" style={{ marginBottom: '-24px' }}>
@@ -292,7 +144,7 @@ export default function LoginPage() {
 
           {/* Card */}
           <div
-            className="rounded-3xl p-8 md:p-10 pt-12 relative"
+            className="relative rounded-3xl p-6 pt-10 sm:p-8 sm:pt-10 md:p-10"
             style={{
               background: 'linear-gradient(145deg, rgba(30,20,60,0.95) 0%, rgba(20,14,45,0.98) 100%)',
               border: '1px solid rgba(139,92,246,0.25)',
@@ -300,6 +152,13 @@ export default function LoginPage() {
               backdropFilter: 'blur(20px)',
             }}
           >
+            {/* NOVA identity */}
+            <div className="mb-7 flex items-center justify-center gap-2.5">
+              <span className="flex h-8 w-8 items-center justify-center rounded-xl border border-violet-300/30 bg-gradient-to-br from-violet-500 to-indigo-600 shadow-[0_0_20px_rgba(139,92,246,0.3)]"><Sparkles size={15} className="text-white" /></span>
+              <span className="text-sm font-bold tracking-[0.22em] text-white">NOVA <span className="text-violet-300">AI</span></span>
+              <span className="ml-1 rounded-full border border-white/10 px-2 py-0.5 text-[9px] font-medium uppercase tracking-wider text-slate-400">Secure access</span>
+            </div>
+
             {/* Header */}
             <div className="text-center mb-7">
               <h1 className="text-2xl md:text-3xl font-bold text-white">
@@ -417,7 +276,8 @@ export default function LoginPage() {
                   </label>
                   <button
                     type="button"
-                    className="text-sm font-medium text-[#7c3aed] hover:text-[#a78bfa] transition-colors"
+                    onClick={() => setError('Password reset is not set up yet. Please contact your NOVA administrator.')}
+                    className="text-sm font-medium text-violet-300 transition-colors hover:text-violet-200"
                   >
                     Forgot password?
                   </button>
@@ -457,33 +317,6 @@ export default function LoginPage() {
                 )}
               </motion.button>
             </form>
-
-            {/* Divider */}
-            <div className="flex items-center gap-3 my-5">
-              <div className="flex-1 h-px" style={{ background: 'rgba(139,92,246,0.2)' }} />
-              <span className="text-xs text-[#555e7a]">or continue with</span>
-              <div className="flex-1 h-px" style={{ background: 'rgba(139,92,246,0.2)' }} />
-            </div>
-
-            {/* Google button */}
-            <motion.button
-              type="button"
-              onClick={handleGoogleSignIn}
-              disabled={googleLoading}
-              whileHover={{ scale: 1.01, borderColor: 'rgba(139,92,246,0.5)' }}
-              whileTap={{ scale: 0.98 }}
-              className="w-full rounded-xl py-3.5 text-sm font-semibold text-white flex items-center justify-center gap-3 transition-all disabled:opacity-70"
-              style={{
-                background: 'rgba(15,10,35,0.9)',
-                border: '1px solid rgba(255,255,255,0.12)',
-              }}
-            >
-              {googleLoading ? (
-                <><Loader2 size={17} className="animate-spin" /> Connecting…</>
-              ) : (
-                <><GoogleIcon /> Sign in with Google</>
-              )}
-            </motion.button>
 
             {/* Toggle mode */}
             <p className="mt-6 text-center text-sm text-[#8b92a5]">

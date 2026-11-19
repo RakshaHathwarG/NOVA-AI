@@ -13,52 +13,52 @@ import snowImg from '../assets/avatars/anime_snow_avatar.png'
 
 // ── System Status ───────────────────────────────────────────────────────────
 const STATUS_ITEMS = [
-  { label: 'AI Engine', status: 'Ready' },
-  { label: 'Voice Engine', status: 'Ready' },
-  { label: 'Avatar Engine', status: 'Ready' },
-  { label: 'Language Model', status: 'Active', accent: true },
+  { label: 'ARIA · HR and career', status: 'Gemini-backed' },
+  { label: 'SNOW · customer support', status: 'Gemini-backed' },
+  { label: 'Saved chat history', status: 'MongoDB-backed' },
+  { label: 'Voice controls', status: 'Browser-based', accent: true },
 ]
 
 // ── Top Feature Cards ───────────────────────────────────────────────────────
 const FEATURE_CARDS = [
   {
     icon: Bot,
-    title: 'AI Assistants',
+    title: 'Assistant roles',
     value: '2',
-    sub: 'Virtual Assistants',
-    badge: 'Ready ✓',
+    sub: 'ARIA for HR · SNOW for support',
+    badge: 'Generative AI',
     badgeColor: 'emerald',
     items: null,
     accent: 'purple',
   },
   {
     icon: Mic,
-    title: 'Voice Interaction',
+    title: 'Browser voice controls',
     value: null,
     sub: null,
-    badge: '+ Enabled',
+    badge: 'Device dependent',
     badgeColor: 'cyan',
-    items: ['Speech Recognition', 'Text To Speech', 'Real-time Voice'],
+    items: ['Browser speech input', 'Device text-to-speech', 'Browser support required'],
     accent: 'cyan',
   },
   {
     icon: Globe,
-    title: 'Multilingual Support',
+    title: 'AI reply languages',
     value: null,
     sub: null,
-    badge: 'Available',
+    badge: 'Multilingual',
     badgeColor: 'emerald',
-    items: ['English', 'Hindi', 'Japanese', 'Korean', 'Spanish'],
+    items: ['English', 'Hindi', 'Japanese', 'Korean', 'Spanish + more'],
     accent: 'indigo',
   },
   {
     icon: User,
-    title: 'Digital Avatar',
+    title: 'Animated avatars',
     value: null,
     sub: null,
-    badge: 'Operational',
+    badge: 'Interface animation',
     badgeColor: 'emerald',
-    items: ['Animated Avatar', 'Lip Sync', 'Expressions'],
+    items: ['ARIA and SNOW artwork', 'Animated expressions', 'No live video stream'],
     accent: 'purple',
   },
 ]
@@ -67,8 +67,8 @@ const FEATURE_CARDS = [
 const QUICK_ACTIONS = [
   { label: 'Launch HR Assistant', hint: 'Talk to Aria', path: '/assistant/hr', icon: Bot, accent: 'purple' },
   { label: 'Launch Customer Support', hint: 'Talk to Snow', path: '/assistant/support', icon: Mic2, accent: 'cyan' },
-  { label: 'Voice Settings', hint: 'Configure voice', path: '/settings', icon: Mic, accent: 'cyan' },
-  { label: 'Language Settings', hint: 'Manage languages', path: '/settings', icon: Globe2, accent: 'purple' },
+  { label: 'Voice Settings', hint: 'Configure browser voice', path: '/settings?tab=voice', icon: Mic, accent: 'cyan' },
+  { label: 'Language Settings', hint: 'Choose your preferred reply language', path: '/settings?tab=voice', icon: Globe2, accent: 'purple' },
 ]
 
 // ── Language Flags ──────────────────────────────────────────────────────────
@@ -81,9 +81,8 @@ const LANGS = [
 ]
 
 const VOICE_CAPS = [
-  ['Speech Recognition', 'Real-Time Conversation'],
-  ['Text To Speech', 'Multilingual Voice'],
-  ['Natural Voice Output', ''],
+  ['Browser speech input', 'Device text-to-speech'],
+  ['Voice availability varies by browser', ''],
 ]
 
 const TECH = [
@@ -125,7 +124,7 @@ export default function DashboardPage() {
               </h1>
               <p className="mt-1 text-sm font-medium text-ink-muted">NOVA AI Control Center</p>
               <p className="mt-1 max-w-md text-sm text-ink-faint leading-relaxed">
-                Your AI assistants are online and ready, {firstName}. Launch a session or monitor activity below.
+                Launch ARIA or SNOW, adjust browser voice and language preferences, or review your saved conversations.
               </p>
             </motion.div>
 
@@ -135,8 +134,8 @@ export default function DashboardPage() {
               className="shrink-0 rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-sm p-4 min-w-[240px]"
             >
               <div className="flex items-center gap-2 mb-3">
-                <span className="text-sm font-semibold text-white">System Status</span>
-                <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)] animate-pulse" />
+                <span className="text-sm font-semibold text-white">Workspace capabilities</span>
+                <span className="rounded-full border border-white/10 px-2 py-1 text-[10px] text-ink-faint">Connected services</span>
               </div>
               <div className="space-y-2">
                 {STATUS_ITEMS.map((s) => (
@@ -215,7 +214,7 @@ export default function DashboardPage() {
                       <p className="text-base font-bold text-nova-purple">ARIA</p>
                       <p className="text-xs text-ink-muted mb-2">Senior HR Assistant</p>
                       <ul className="space-y-0.5">
-                        {['HR Policies', 'Leave Management', 'Employee Guidelines', 'Recruitment Queries'].map((t) => (
+                        {['Career planning', 'Workplace guidance', 'Interview preparation'].map((t) => (
                           <li key={t} className="flex items-center gap-1.5 text-[11px] text-ink-muted">
                             <CheckCircle2 size={10} className="text-nova-purple shrink-0" />{t}
                           </li>
@@ -234,7 +233,7 @@ export default function DashboardPage() {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-1.5">
                       <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.8)]" />
-                      <span className="text-[11px] text-emerald-400 font-medium">Status • Ready</span>
+                      <span className="text-[11px] text-emerald-400 font-medium">Gemini-powered replies</span>
                     </div>
                   </div>
                   <button
@@ -255,7 +254,7 @@ export default function DashboardPage() {
                       <p className="text-base font-bold text-nova-cyan">SNOW</p>
                       <p className="text-xs text-ink-muted mb-2">Customer Support Assistant</p>
                       <ul className="space-y-0.5">
-                        {['Customer Queries', 'Complaint Resolution', 'Product Information', 'Order Assistance'].map((t) => (
+                        {['Troubleshooting', 'Issue triage', 'Product guidance'].map((t) => (
                           <li key={t} className="flex items-center gap-1.5 text-[11px] text-ink-muted">
                             <CheckCircle2 size={10} className="text-nova-cyan shrink-0" />{t}
                           </li>
@@ -274,7 +273,7 @@ export default function DashboardPage() {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-1.5">
                       <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.8)]" />
-                      <span className="text-[11px] text-emerald-400 font-medium">Status • Ready</span>
+                      <span className="text-[11px] text-emerald-400 font-medium">Gemini-powered replies</span>
                     </div>
                   </div>
                   <button
@@ -384,3 +383,4 @@ export default function DashboardPage() {
     </AppLayout>
   )
 }
+
