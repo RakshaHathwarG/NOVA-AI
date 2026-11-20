@@ -8,9 +8,9 @@
 
 NOVA AI is a React single-page application with an Express API. It provides two authenticated AI assistant chats:
 
-- **<img src="IMAGE_URL" width="35" height="35" /> **ARIA – HR Assistant:** General HR and career guidance.
-- **<img src="IMAGE_URL" width="35" height="35" alt="SNOW avatar" /> **SNOW – Customer Support Assistant:*** Customer-support troubleshooting.
-
+- <img src="./src/assets/aria.png" width="35" height="35" alt="ARIA avatar" /> **ARIA – HR Assistant:** General HR and career guidance.
+- <img src="./src/assets/snow.png" width="35" height="35" alt="SNOW avatar" /> **SNOW – Customer Support Assistant:** Customer-support troubleshooting.
+  
 The backend uses MongoDB for accounts and saved records and Google Gemini for AI-generated replies.
 
 The assistants provide general guidance. They are not connected to real employer HR systems, customer accounts, orders, billing, or ticketing systems.
