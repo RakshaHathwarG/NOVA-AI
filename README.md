@@ -8,9 +8,9 @@
 
 NOVA AI is a React single-page application with an Express API. It provides two authenticated AI assistant chats:
 
-- <img src="./src/assets/aria.png" width="35" height="35" alt="ARIA avatar" /> **ARIA – HR Assistant:** General HR and career guidance.
-- <img src="./src/assets/snow.png" width="35" height="35" alt="SNOW avatar" /> **SNOW – Customer Support Assistant:** Customer-support troubleshooting.
-  
+- \<img src="[https://raw.githubusercontent.com/RakshaHathwarG/NOVA-AI/main/src/assets/aria.png](https://raw.githubusercontent.com/RakshaHathwarG/NOVA-AI/main/src/assets/aria.png)" width="35" height="35" alt="ARIA avatar" /> **ARIA – HR Assistant:** General HR and career guidance.
+- \<img src="[https://raw.githubusercontent.com/RakshaHathwarG/NOVA-AI/main/src/assets/snow.png](https://raw.githubusercontent.com/RakshaHathwarG/NOVA-AI/main/src/assets/snow.png)" width="35" height="35" alt="SNOW avatar" /> **SNOW – Customer Support Assistant:** Customer-support troubleshooting.
+
 The backend uses MongoDB for accounts and saved records and Google Gemini for AI-generated replies.
 
 The assistants provide general guidance. They are not connected to real employer HR systems, customer accounts, orders, billing, or ticketing systems.
@@ -31,13 +31,13 @@ The language selector offers English, Hindi, Japanese, Korean, and Spanish. Spee
 
 ## 🛠️ Technology Stack
 
-| Area | Technologies |
-|---|---|
-| Frontend | React, Vite, React Router DOM, Tailwind CSS, Framer Motion, Lucide React |
-| Backend | Node.js, Express, Mongoose, bcryptjs, jsonwebtoken |
-| Database | MongoDB |
-| AI Integration | Google Gemini API |
-| Optional Integration | YouTube Data API v3 |
+| Area                 | Technologies                                                             |
+| -------------------- | ------------------------------------------------------------------------ |
+| Frontend             | React, Vite, React Router DOM, Tailwind CSS, Framer Motion, Lucide React |
+| Backend              | Node.js, Express, Mongoose, bcryptjs, jsonwebtoken                       |
+| Database             | MongoDB                                                                  |
+| AI Integration       | Google Gemini API                                                        |
+| Optional Integration | YouTube Data API v3                                                      |
 
 ## 📁 Project Structure
 
@@ -158,36 +158,36 @@ npm run preview
 
 ## 🧭 Application Routes
 
-| Route | Purpose |
-|---|---|
-| `/` | Landing page |
-| `/login` | Login and registration |
-| `/dashboard` | Assistant dashboard |
-| `/roles` | Assistant selection |
-| `/assistant/hr` | ARIA chat |
-| `/assistant/support` | SNOW chat |
-| `/history` | Saved conversations |
-| `/settings` | User settings |
-| `/help` | FAQs and feedback |
+| Route                | Purpose                |
+| -------------------- | ---------------------- |
+| `/`                  | Landing page           |
+| `/login`             | Login and registration |
+| `/dashboard`         | Assistant dashboard    |
+| `/roles`             | Assistant selection    |
+| `/assistant/hr`      | ARIA chat              |
+| `/assistant/support` | SNOW chat              |
+| `/history`           | Saved conversations    |
+| `/settings`          | User settings          |
+| `/help`              | FAQs and feedback      |
 
 ## 🔌 Backend API
 
 The API is mounted under `/api`. Protected routes require JWT authentication.
 
-| Method | Endpoint | Purpose |
-|---|---|---|
-| GET | `/health` | Backend health check |
-| POST | `/api/register` | User registration |
-| POST | `/api/login` | User login |
-| POST | `/api/google` | Optional Google ID-token verification |
-| GET | `/api/profile` | User profile |
-| POST | `/api/chat/generate` | Generate and save AI replies |
-| POST | `/api/chat` | Save a chat record |
-| GET | `/api/chat-history` | Retrieve chat history |
-| GET | `/api/session-brief` | Retrieve a session brief |
-| PUT | `/api/session-brief` | Create or update a session brief |
-| DELETE | `/api/session-brief` | Delete a session brief |
-| POST | `/api/feedback` | Submit feedback |
+| Method | Endpoint             | Purpose                               |
+| ------ | -------------------- | ------------------------------------- |
+| GET    | `/health`            | Backend health check                  |
+| POST   | `/api/register`      | User registration                     |
+| POST   | `/api/login`         | User login                            |
+| POST   | `/api/google`        | Optional Google ID-token verification |
+| GET    | `/api/profile`       | User profile                          |
+| POST   | `/api/chat/generate` | Generate and save AI replies          |
+| POST   | `/api/chat`          | Save a chat record                    |
+| GET    | `/api/chat-history`  | Retrieve chat history                 |
+| GET    | `/api/session-brief` | Retrieve a session brief              |
+| PUT    | `/api/session-brief` | Create or update a session brief      |
+| DELETE | `/api/session-brief` | Delete a session brief                |
+| POST   | `/api/feedback`      | Submit feedback                       |
 
 ## 🔐 Security and Data Handling
 
@@ -211,4 +211,4 @@ The API is mounted under `/api`. Protected routes require JWT authentication.
 
 **🎓 Sai Vidya Institute of Technology (SVIT), Bengaluru**
 
-*✨ NOVA AI – Role-Based Virtual Assistance Platform*
+*✨ NOVA AI – AI Role-Based Virtual Assistance Platform*
