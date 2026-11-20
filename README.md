@@ -1,4 +1,7 @@
 # NOVA AI
+**Institution:** Sai Vidya Institute of Technology (SVIT), Bengaluru, Karnataka.
+
+**Project:** NOVA AI – Role-Based Virtual Assistant Platform
 
 NOVA AI is a React single-page application with an Express API. The current UI provides two authenticated assistant chats: **ARIA** for general HR and career guidance, and **SNOW** for customer-support troubleshooting. The backend uses MongoDB for accounts and saved records and can call Google Gemini for replies.
 
